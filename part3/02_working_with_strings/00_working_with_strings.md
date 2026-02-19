@@ -122,3 +122,46 @@ print("es" in input_string) # true
 print("ets" in input_string) # false
 
 ```
+
+> [!NOTE]
+> The [vowes](./12_vowels.py) is very illustrative about this *substrings*
+topic and the model's answer it's clever.
+
+## The `find` method in strings
+
+While the operator `in` returns `True` as Boolean vale **if**
+a given substring exist within a string, it does not tell us
+**where** it actually is. This is when the `find` string method
+comes in handy. It takes the substring searched for as an argument,
+and returns either the first index where it is found, or `-1`
+if the substring is not found within the string.
+
+```python
+input_string = "test"
+
+print(input_string.find("t")) # 0
+print(input_string.find("x")) # -1
+print(input_string.find("es")) # 1
+print(input_string.find("ets")) # -1
+
+```
+
+A more complex example using a loop and input:
+
+```python
+input_string = "perpendicular"
+
+while True:
+    substring = input("What are you looking for? ")
+    index = input_string.find(substring)
+    if index >= 0:
+        print(f"Found it at the index {index}")
+    else:
+        print("Not found")
+```
+
+> [!IMPORTANT]
+> **Methods**  differentiate from functions in the fact that
+methods always are attached to the *object* it is called on.
+In the case of `find` the object is the **string** where
+the method *looks for* the substring.
