@@ -3,9 +3,16 @@ and an integer argument, and prints out a square of characters
 """
 
 
-def squared(string: str, number: int) -> None:
+# Write your solution here
+def squared(word, length):
+    word *= length * length
     i = 1
-    while i <= number:
+    start = 0
+    end = length
+    while i <= length:
+        print(word[start:end])
+        start += length
+        end += length
         i += 1
 
 
