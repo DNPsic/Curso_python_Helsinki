@@ -4,7 +4,7 @@
 
 - Be familiar with more methods for slicing strings and lists.
 - Learn what is **immutability**.
-- Use the methods `.conunt()` and `.replace()`.
+- Use the methods `.count()` and `.replace()`.
 
 ## More slices
 
