@@ -70,7 +70,17 @@ def total_points(exam_points: list[int], exercise_points: list[int]) -> list[int
     return points
 
 
-def grades(total_points: list[int]) -> list[int]:
+def passed_or_not(exam_points: list[int]) -> list[bool]:
+    passed: list[bool] = []
+    for value in exam_points:
+        if value < 10:
+            passed.append(False)
+        else:
+            passed.append(True)
+    return passed
+
+
+def grades(total_points: list[int], passed_or_not: list[bool]) -> list[int]:
     grades: list[int] = []
     for value in total_points:
         if value <= 14:
@@ -85,40 +95,70 @@ def grades(total_points: list[int]) -> list[int]:
             grades.append(4)
         elif value <= 30:
             grades.append(5)
+
+    # Update final grade if exam_points < 10
+    index = 0
+    for value in grades:
+        if not passed_or_not[index]:
+            grades[index] = 0
+        index += 1
+
     return grades
 
 
-def passed_or_not(exam_points: list[int]) -> list[bool]:
-    passed: list[bool] = []
-    for value in exam_points:
-        if value < 10:
-            passed.append(False)
-        else:
-            passed.append(True)
-    return passed
+def points_average(total_points: list[int]) -> float:
+    average: float = sum(total_points) / len(total_points)
+    return average
 
 
-"""TODO:
-Implement function to upgrade the grades if anyone didn't pass
-via exams points, that is, less than 10 points as the function
-`passed_or_not()` already does."""
+def pass_percentage(grades: list[int]) -> float:
+    sum_passed: int = 0
+    for grade in grades:
+        if grade != 0:
+            sum_passed += 1
+    percentage: float = (sum_passed / len(grades)) * 100
+    return percentage
+
+
+def distribution(grades: list[int]) -> None:
+    values: list[int] = [5, 4, 3, 2, 1, 0]
+    print("Grade distribution: ")
+    for value in values:
+        print(f"{value:>2}: {'*' * grades.count(value)}")
 
 
 def main():
     data = input_data()
     # print(data)
+    # exams = exam_points([15, 87, 10, 55, 11, 40, 4, 17])  # hard coded for testing
+    # data = [15, 87, 10, 55, 11, 40, 4, 17]  # hard coded for testing
     exams = exam_points(data)
     completed = completed_exercises(data)
-    print(f"Exercises completed: {completed}")
-    print(f"Exams points: {exams}")
+    # print(f"Exercises completed: {completed}")
+    # print(f"Exams points: {exams}")
     exercises = exercise_points(completed)
-    print(f"Exercise points: {exercises}")
+    # print(f"Exercise points: {exercises}")
     total = total_points(exam_points=exams, exercise_points=exercises)
-    print(f"Total points: {total}")
-    final_grades = grades(total)
-    print(f"Grades: {final_grades}")
-    aproved = passed_or_not(exam_points=exams)
-    print(f"Aproved by exam points: {aproved}")
+    # print(f"Total points: {total}")
+    approved = passed_or_not(exam_points=exams)
+    final_grades = grades(total, approved)
+    # print(f"Passed by exam: {approved}")
+    # print(f"Grades: {final_grades}")
+    print("Statistics: ")
+    print(f"Points average: {points_average(total):.1f}")
+    print(f"Pass percentage: {pass_percentage(final_grades):.1f}")
+    distribution(final_grades)
 
 
-main()
+# main()
+data = input_data()
+exams_points = exam_points(data)
+completed = completed_exercises(data)
+exers_points = exercise_points(completed)
+total = total_points(exams_points, exers_points)
+aproved = passed_or_not(exams_points)
+final_grades = grades(total, aproved)
+print("Statistics: ")
+print(f"Points average: {points_average(total):.1f}")
+print(f"Pass percentage: {pass_percentage(final_grades):.1f}")
+distribution(final_grades)

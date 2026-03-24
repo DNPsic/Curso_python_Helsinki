@@ -135,3 +135,20 @@ print(my_string)
 # Java is fun
 
 ```
+
+## Final thoughts for this part
+
+Type hints are one of my favourite things learnt this week, and using lists in
+the exercises is more satisfying and useful, from now on I will use them both
+in all my programs; also made a little research to learn more about type hints.
+Also I'm very impressed by the for loop and the concept of finite iterations.
+I'm feeling fluent in python now, and I'm excited to learn more complex things.
+
+I can understand enough when the course says we can use the main() function
+and when it is not recommended; also it's a little confusing if we have to
+include in every exercise the if __name__ block, I did because didn't know
+if it was necessary or no.
+
+In general I don't like the need to submit exercises via VSCode but I can
+understand why, the extension works just fine and it's intuitive, but I don't
+like the Microsoft telemetry causing my pc to work unnecessary.
