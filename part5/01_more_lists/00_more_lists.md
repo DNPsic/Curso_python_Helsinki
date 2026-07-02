@@ -1,5 +1,15 @@
 # More lists
 
+<!--toc:start-->
+- [More lists](#more-lists)
+  - [Learning objectives](#learning-objectives)
+  - [Lists with different type of data](#lists-with-different-type-of-data)
+  - [Warning: overwriting a parameter and returning too early](#warning-overwriting-a-parameter-and-returning-too-early)
+  - [Lists within lists](#lists-within-lists)
+  - [Matrices](#matrices)
+  - [Accessing items in a matrix](#accessing-items-in-a-matrix)
+<!--toc:end-->
+
 ## Learning objectives
 
 Create lists with different types of items.
